@@ -1,35 +1,33 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #1e1e2f;
-  color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+function choose(path) {
+  const story = document.getElementById("story");
+  const choices = document.getElementById("choices");
 
-.container {
-  text-align: center;
-  max-width: 600px;
-  padding: 20px;
-  background-color: #2e2e3e;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+  if (path === "esquerda") {
+    story.textContent = "Você encontra um lago mágico. Um espírito da floresta oferece um desejo.";
+    choices.innerHTML = `
+      <button onclick="choose('desejo')">Pedir um desejo ✨</button>
+      <button onclick="choose('fugir')">Fugir assustado 😱</button>
+    `;
+  } else if (path === "direita") {
+    story.textContent = "Você encontra uma caverna escura. Algo brilha lá dentro.";
+    choices.innerHTML = `
+      <button onclick="choose('entrar')">Entrar na caverna 🔦</button>
+      <button onclick="choose('voltar')">Voltar para o início 🔁</button>
+    `;
+  } else if (path === "desejo") {
+    story.textContent = "Seu desejo se realiza! Você se torna o guardião da floresta.";
+    choices.innerHTML = `<button onclick="location.reload()">Jogar novamente 🔄</button>`;
+  } else if (path === "fugir") {
+    story.textContent = "Você corre e tropeça em uma raiz. A floresta te envolve e você adormece novamente.";
+    choices.innerHTML = `<button onclick="location.reload()">Tentar de novo 🔄</button>`;
+  } else if (path === "entrar") {
+    story.textContent = "Dentro da caverna, você encontra um tesouro perdido há séculos!";
+    choices.innerHTML = `<button onclick="location.reload()">Explorar outra vez 🔄</button>`;
+  } else if (path === "voltar") {
+    story.textContent = "Você retorna ao ponto inicial. Dois caminhos se abrem novamente.";
+    choices.innerHTML = `
+      <button onclick="choose('esquerda')">Ir pela trilha da esquerda 🌲</button>
+      <button onclick="choose('direita')">Seguir pela trilha da direita 🌳</button>
+    `;
+  }
 }
-
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
